@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    jcenter()
+}
+
+application {
+    applicationName = "rest-test"
+    group = "com.alurie.resttest"
+    version = "0.0.1"
+    mainClassName = "com.alurie.resttest.App"
+}
+
+bootJar {
+    manifest {
+        attributes('Start-Class': mainClassName,
+                   'Implementation-Title': applicationName,
+                   'Implementation-Version': version
+        )
+   }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web' 
+    testImplementation 'junit:junit:4.12'
+}
+
